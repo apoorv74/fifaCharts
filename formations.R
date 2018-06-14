@@ -42,6 +42,13 @@ formation_4231 <- data.frame(
   formation = rep('4231', 10)
 )
 
+formation_4312 <- data.frame(
+  loc_x = c(quantile(seq(10:90))[2:5], c(36,52,66) ,52, c(39,63)),
+  loc_y = c(rep(77, 4), rep(67,3), c(60), c(55,55)),
+  formation = rep('4312', 10)
+)
+
+
 formation_4141 <- data.frame(
   loc_x = c(quantile(seq(10:90))[2:5], 52, c(17,37,65,85) ,52),
   loc_y = c(rep(77, 4), 70, rep(64, 4), 55),
@@ -54,7 +61,7 @@ formation_352 <- data.frame(
   formation = rep('352', 10)
 )
 
-all_formations <- dplyr::bind_rows(goal_keeper, formation_442,formation_433,formation_4231,formation_4141,formation_352)
+all_formations <- dplyr::bind_rows(goal_keeper, formation_442,formation_433,formation_4231,formation_4312,formation_4141,formation_352)
 
 create_formation <- function(formation_a, formation_b){
   
@@ -71,7 +78,7 @@ create_formation <- function(formation_a, formation_b){
   return(formation_df)
 }
 
-formation_df <- create_formation('433','352')
+formation_df <- create_formation('4231','4312')
   
 empty_court <- ggplot(data = formation_df,
                       aes(x = loc_x, y = loc_y,
